@@ -1,49 +1,34 @@
 import { useEffect, useState } from "react";
 
-interface UseTypewriterOptions {
-    words: string[];
-    typingSpeedMs?: number;
-    deletingSpeedMs?: number;
-    pauseMs?: number;
-}
+export function useTypewriter(words: string[], typingSpeed = 100, pause = 2000) {
+  const [wordIndex, setWordIndex] = useState(0);
+  const [displayText, setDisplayText] = useState("");
+  const [isDeleting, setIsDeleting] = useState(false);
 
-export function useTypewriter({
-    words,
-    typingSpeedMs = 90,
-    deletingSpeedMs = 45,
-    pauseMs = 1800,
-}: UseTypewriterOptions) {
-    const [wordIndex, setWordIndex] = useState(0);
-    const [text, setText] = useState("");
-    const [isDeleting, setIsDeleting] = useState(false);
+  useEffect(() => {
+    const currentWord = words[wordIndex];
 
-    useEffect(() => {
-        const currentWord = words[wordIndex % words.length];
+    const timer = setTimeout(() => {
+      if (!isDeleting) {
+        const next = currentWord.slice(0, displayText.length + 1);
+        setDisplayText(next);
 
-        if (!isDeleting && text === currentWord) {
-            const pause = setTimeout(() => setIsDeleting(true), pauseMs);
-            return () => clearTimeout(pause);
+        if (next === currentWord) {
+          setTimeout(() => setIsDeleting(true), pause);
         }
+      } else {
+        const next = currentWord.slice(0, displayText.length - 1);
+        setDisplayText(next);
 
-        if (isDeleting && text === "") {
-            setIsDeleting(false);
-            setWordIndex((i) => i + 1);
-            return;
+        if (next === "") {
+          setIsDeleting(false);
+          setWordIndex((prev) => (prev + 1) % words.length);
         }
+      }
+    }, isDeleting ? typingSpeed / 2 : typingSpeed);
 
-        const step = setTimeout(
-            () => {
-                setText((prev) =>
-                    isDeleting
-                        ? currentWord.slice(0, prev.length - 1)
-                        : currentWord.slice(0, prev.length + 1)
-                );
-            },
-            isDeleting ? deletingSpeedMs : typingSpeedMs
-        );
+    return () => clearTimeout(timer);
+  }, [displayText, isDeleting, pause, typingSpeed, wordIndex, words]);
 
-        return () => clearTimeout(step);
-    }, [text, isDeleting, wordIndex, words, typingSpeedMs, deletingSpeedMs, pauseMs]);
-
-    return text;
+  return displayText;
 }

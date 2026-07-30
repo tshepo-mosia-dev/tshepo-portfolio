@@ -1,14 +1,43 @@
+import profile from "../../assets/images/profile.jpeg";
+import AvailabilityCard from "./AvailabilityCard";
+import { motion } from "framer-motion";
+import { fadeRight } from "../../animations/variants";
+
 const HeroImage = () => {
     return (
-        <div className="flex justify-center lg:justify-end">
-            <div className="relative">
-                <div className="absolute inset-0 rounded-full bg-blue-600 blur-3xl opacity-30" />
+        <motion.div
+            variants={fadeRight}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.3 }}
+            className="relative flex justify-center lg:justify-end"
+        >
 
-                <div className="relative flex h-80 w-80 items-center justify-center rounded-full border border-slate-700 bg-slate-900 text-6xl font-bold text-white shadow-2xl">
-                    TM
-                </div>
-            </div>
-        </div>
+            {/* Blue Glow */}
+            <div className="absolute h-107.5 w-107.5 rounded-full bg-primary/20 blur-3xl" />
+
+            {/* Image Container */}
+            <motion.div
+                animate={{
+                    y: [0, -10, 0],
+                }}
+                transition={{
+                    duration: 5,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                }}
+                className="relative h-105 w-105 overflow-hidden rounded-full border border-border bg-surface shadow-2xl"
+            >
+                <img
+                    src={profile}
+                    alt="Tshepo Mosia"
+                    className="h-full w-full object-cover"
+                />
+            </motion.div>
+
+            {/* Availability Card */}
+            <AvailabilityCard />
+        </motion.div>
     );
 };
 

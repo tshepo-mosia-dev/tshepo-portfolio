@@ -5,7 +5,7 @@ import { portfolio } from "../../data/portfolio";
 const Footer = () => {
   return (
     <footer className="border-t border-slate-800 bg-slate-950">
-      <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-6 px-6 py-8 text-center md:flex-row">
+      <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-6 px-6 py-4 text-center md:flex-row">
         {/* Left */}
         <div>
           <h2 className="text-lg font-semibold text-white">
