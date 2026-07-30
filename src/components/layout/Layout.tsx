@@ -3,17 +3,17 @@ import Navbar from "./Navbar";
 import Footer from "./Footer";
 
 const Layout = () => {
-  return (
-    <>
-      <Navbar />
+    return (
+        <>
+            <Navbar />
 
-      <main>
-        <Outlet />
-      </main>
+            <main className="pt-20 min-h-screen">
+                <Outlet />
+            </main>
 
-      <Footer />
-    </>
-  );
+            <Footer />
+        </>
+    );
 };
 
 export default Layout;
