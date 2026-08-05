@@ -3,11 +3,11 @@ import { Routes, Route } from "react-router-dom";
 import Layout from "../components/layout/Layout";
 
 import Home from "../pages/Home/Home";
-import About from "../pages/About";
+import About from "../pages/About/About";
 import Projects from "../pages/Projects";
 import ProjectDetails from "../pages/ProjectDetails";
-import Experience from "../pages/Experience";
-import Contact from "../pages/Contact";
+import Experience from "../pages/Experience/Experience";
+import Contact from "../pages/Contact/Contact";
 
 const Router = () => {
   return (
