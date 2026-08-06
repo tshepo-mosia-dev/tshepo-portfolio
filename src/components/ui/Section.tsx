@@ -11,7 +11,7 @@ const Section = ({
     className = "",
 }: SectionProps) => {
     return (
-        <section className={`py-24 ${className}`}>
+        <section className={`py-10 ${className}`}>
             {children}
         </section>
     );
