@@ -18,27 +18,21 @@ import type { SkillCategory } from "../types/skill";
 
 export const skillCategories: SkillCategory[] = [
     {
-        title: "Core Languages",
+        title: "Languages",
         skills: [
             { name: "Python", icon: SiPython, color: "text-yellow-500" },
             { name: "JavaScript", icon: SiJavascript, color: "text-yellow-400" },
             { name: "TypeScript", icon: SiTypescript, color: "text-blue-600" },
             { name: "SQL", icon: Database, color: "text-sky-500" },
-        ],
-    },
-    {
-        title: "Frontend",
-        skills: [
-            { name: "React", icon: SiReact, color: "text-sky-500" },
-            { name: "Tailwind CSS", icon: SiTailwindcss, color: "text-cyan-500" },
             { name: "HTML5", icon: SiHtml5, color: "text-orange-500" },
             { name: "CSS3", icon: FaCss3Alt, color: "text-blue-500" },
         ],
     },
     {
-        title: "Backend",
+        title: "Frameworks & Libraries",
         skills: [
-            { name: "Python", icon: SiPython, color: "text-yellow-500" },
+            { name: "React", icon: SiReact, color: "text-sky-500" },
+            { name: "Tailwind CSS", icon: SiTailwindcss, color: "text-cyan-500" },
             { name: "FastAPI", icon: SiFastapi, color: "text-green-500" },
         ],
     },
@@ -54,11 +48,7 @@ export const skillCategories: SkillCategory[] = [
         skills: [
             { name: "Git", icon: SiGit, color: "text-orange-600" },
             { name: "GitHub", icon: SiGithub, color: "text-gray-700 dark:text-white" },
-            {
-                name: "VS Code",
-                icon: BiLogoVisualStudio,
-                color: "text-blue-500",
-            },
+            { name: "VS Code", icon: BiLogoVisualStudio, color: "text-blue-500" },
         ],
     },
 
