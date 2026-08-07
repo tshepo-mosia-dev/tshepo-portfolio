@@ -10,7 +10,7 @@ const Skills = () => {
 
             </div>
 
-            <div className="grid lg:grid-cols-4 lg:items-start">
+            <div className="space-y-12 grid lg:grid-cols-4 lg:items-start">
                 {skillCategories.map((category) => (
                     <div key={category.title}>
                         <h3 className="mb-6 font-semibold">
